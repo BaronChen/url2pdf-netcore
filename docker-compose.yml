@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  url2pdf.api:
+    image: url2pdfapi
+    build:
+      context: .
+      dockerfile: Url2Pdf.Api/Dockerfile
