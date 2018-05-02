@@ -31,7 +31,8 @@ WORKDIR /node-process
 COPY ["Url2Pdf.Core/package.json", "Url2Pdf.Core/package-lock.json", "/node-process/"]
 RUN npm install
 
-
+RUN mv  /node-process/* /app/
+COPY Url2Pdf.Core/url2pdf.js /app/
 
 FROM microsoft/aspnetcore-build:2.0 AS build
 
@@ -49,7 +50,5 @@ RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-RUN mv  /node-process/* /app/
-COPY Url2Pdf.Core/url2pdf.js /app/
 COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Url2Pdf.Api.dll"]
