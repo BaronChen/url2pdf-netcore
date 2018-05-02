@@ -9,4 +9,9 @@ Usage:
 docker-compose -f docker-compose.yml up
 ```
 
+Example requesy:
+```sh
+http://localhost:4200/api/url-2-pdf/convert?url=https%3A%2F%2Fwww.google.com
+```
+
 Or you can use visual studio 2017 to start the project direcly.
