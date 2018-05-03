@@ -31,6 +31,11 @@ namespace Url2Pdf.Api.Controllers
         [HttpGet, Route("convert")]
         public async Task<IActionResult> Convert([FromQuery]string url)
         {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                return BadRequest("Invalid url");
+            }
+
             var result = await _url2PdfConversionService.ConverUrlToPdf(HttpUtility.UrlDecode(url));
             
             string filename = @"converted.pdf";
