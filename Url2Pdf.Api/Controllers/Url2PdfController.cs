@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Url2Pdf.Core;
@@ -28,17 +29,13 @@ namespace Url2Pdf.Api.Controllers
 
 
         [HttpGet, Route("convert")]
-        public async Task<IActionResult> Convert()
+        public async Task<IActionResult> Convert([FromQuery]string url)
         {
-            var result = await _url2PdfConversionService.ConverUrlToPdf("http://www.google.com");
-
-            HttpContext.Response.ContentType = "application/pdf";
-
+            var result = await _url2PdfConversionService.ConverUrlToPdf(HttpUtility.UrlDecode(url));
+            
             string filename = @"converted.pdf";
-            HttpContext.Response.Headers.Add("x-filename", filename);
-            HttpContext.Response.Headers.Add("Access-Control-Expose-Headers", "x-filename");
-            HttpContext.Response.Body.Write(result, 0, result.Length);
-            return new ContentResult();
+            
+            return File(result, "application/pdf", filename);
         }
 
 

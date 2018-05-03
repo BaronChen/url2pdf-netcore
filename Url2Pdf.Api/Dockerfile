@@ -27,12 +27,10 @@ RUN wget -q -O nodejs.tar.gz "$NODE_DOWNLOAD_URL" \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 RUN PATH=/usr/local/bin/node:$PATH
 
-WORKDIR /node-process
-COPY ["Url2Pdf.Core/package.json", "Url2Pdf.Core/package-lock.json", "/node-process/"]
+WORKDIR /node-app
+COPY ["Url2Pdf.Core/package.json", "Url2Pdf.Core/package-lock.json", "/node-app/"]
 RUN npm install
-
-RUN mv  /node-process/* /app/
-COPY Url2Pdf.Core/url2pdf.js /app/
+COPY Url2Pdf.Core/url2pdf.js ./
 
 FROM microsoft/aspnetcore-build:2.0 AS build
 

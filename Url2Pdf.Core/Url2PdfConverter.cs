@@ -17,7 +17,7 @@ namespace Url2Pdf.Core
 
         public async Task<byte[]> ConvertUrl2Pdf(string url)
         {
-            var result = await _nodeServices.InvokeAsync<string>("./url2pdf", url);
+            var result = await _nodeServices.InvokeAsync<string>("/node-app/url2pdf", url);
 
             return Convert.FromBase64String(result);
         }
