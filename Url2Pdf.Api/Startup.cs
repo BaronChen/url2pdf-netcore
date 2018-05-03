@@ -27,6 +27,8 @@ namespace Url2Pdf.Api
         {
             services.AddNodeServices();
             services.AddTransient<IUrl2PdfConversionService, Url2PdfConversionService>();
+
+            services.AddCors();
             services.AddMvc();
         }
 
@@ -37,6 +39,9 @@ namespace Url2Pdf.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+                builder.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
 
             app.UseMvc();
         }
