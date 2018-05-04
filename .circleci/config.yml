@@ -8,10 +8,10 @@ jobs:
       - run:
           name: Install aws cli
           command: |
-            apt-get --force-yes update
-            apt-get -y --force-yes install zip
-            apt-get install -y python-pip
-            pip install awscli
+            sudo apt-get --force-yes update
+            sudo apt-get -y --force-yes install zip
+            sudo apt-get install -y python-pip
+            sudo pip install awscli
 
       - run:
           name: Setup aws credential
