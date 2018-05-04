@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:9.8.0-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install aws cli
+          command: |
+            apt-get --force-yes update
+            apt-get -y --force-yes install zip
+            apt-get install -y python-pip
+            pip install awscli
+
+      - run:
+          name: Setup aws credential
+          working_directory: /root
+          command: |
+            mkdir ~/.aws
+            touch ~/.aws/config
+            chmod 600 ~/.aws/config
+            echo "[default]" > ~/.aws/config
+            echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+           
+      - setup_remote_docker:   
+          docker_layer_caching: true 
+
+      # build and push Docker image
+      - run:
+          name: Build docker image
+          command: |
+            TAG=0.$CIRCLE_BUILD_NUM
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./deploy/push-images.sh $TAG
+            fi
