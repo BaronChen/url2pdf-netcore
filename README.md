@@ -1,4 +1,4 @@
-# Smaple project with .Net Core and Puppeteer
+# Sample project with .Net Core and Puppeteer
 
 This is a sample project that use .net core NodetServices to utilise Puppeteer nodejs API.
 
