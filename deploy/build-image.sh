@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 
-/usr/local/bin/docker-compose -f docker-compose.yml build
+~/docker-compose -f docker-compose.yml build
