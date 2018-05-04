@@ -13,17 +13,6 @@ jobs:
             sudo apt-get install -y python-pip
             sudo pip install awscli
 
-      - run:
-          name: Setup aws credential
-          working_directory: /root
-          command: |
-            sudo mkdir ~/.aws
-            touch ~/.aws/config
-            sudo chmod 600 ~/.aws/config
-            sudo echo "[default]" > ~/.aws/config
-            sudo echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
-            sudo echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
-           
       - setup_remote_docker:   
           docker_layer_caching: true 
 
