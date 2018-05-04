@@ -17,12 +17,12 @@ jobs:
           name: Setup aws credential
           working_directory: /root
           command: |
-            mkdir ~/.aws
-            touch ~/.aws/config
-            chmod 600 ~/.aws/config
-            echo "[default]" > ~/.aws/config
-            echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
-            echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
+            sudo mkdir ~/.aws
+            sudo touch ~/.aws/config
+            sudo chmod 600 ~/.aws/config
+            sudo echo "[default]" > ~/.aws/config
+            sudo echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
+            sudo echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
            
       - setup_remote_docker:   
           docker_layer_caching: true 
