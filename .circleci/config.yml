@@ -22,6 +22,6 @@ jobs:
           command: |
             TAG=0.$CIRCLE_BUILD_NUM
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./deploy/build-images.sh
-              ./deploy/push-images.sh $TAG
+              ./deploy/build-image.sh
+              ./deploy/push-image.sh $TAG
             fi
