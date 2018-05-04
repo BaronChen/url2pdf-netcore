@@ -2,16 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.5-node
+      - image: microsoft/azure-cli:latest
     steps:
       - checkout
-      - run:
-          name: Install aws cli
-          command: |
-            sudo apt-get --force-yes update
-            sudo apt-get -y --force-yes install zip
-            sudo apt-get install -y python-pip
-            sudo pip install awscli
 
       - setup_remote_docker:   
           docker_layer_caching: true 

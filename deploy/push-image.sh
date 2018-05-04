@@ -1,6 +1,6 @@
 #!/bin/sh
 
-eval "$(aws ecr get-login --region=ap-southeast-2 --no-include-email)"
+docker tag url2pdfapi:latest baron123.azurecr.io/number-word/url2pdfapi:$1
+docker login baron123.azurecr.io -u $DOCKER_USER -p $DOCKER_PASS        
+docker push baron123.azurecr.io/number-word/url2pdfapi
 
-docker tag url2pdfapi:latest 677611292116.dkr.ecr.ap-southeast-2.amazonaws.com/url2pdf-api:$1
-docker push 677611292116.dkr.ecr.ap-southeast-2.amazonaws.com/url2pdf-api
