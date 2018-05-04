@@ -5,11 +5,6 @@ jobs:
       - image: microsoft/azure-cli:latest
     steps:
       - checkout
-      - run:
-          name: Install docker compose
-          command: |
-            pip install docker-compose
-
 
       - setup_remote_docker:   
           docker_layer_caching: true 
@@ -20,6 +15,8 @@ jobs:
           command: |
             TAG=0.$CIRCLE_BUILD_NUM
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./deploy/build-image.sh
-              ./deploy/push-image.sh $TAG
+              docker-compose -f docker-compose.yml build
+              docker tag url2pdfapi:latest baron123.azurecr.io/number-word/url2pdfapi:$1
+              docker login baron123.azurecr.io -u $DOCKER_USER -p $DOCKER_PASS        
+              docker push baron123.azurecr.io/number-word/url2pdfapi
             fi
