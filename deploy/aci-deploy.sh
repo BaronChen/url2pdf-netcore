@@ -14,4 +14,4 @@ else
     az group create --location $location --name $group_name
 fi
 
-az container create --resource-group $group_name --name $continaer_name --image $image --dns-name-label $dns_label --ports 80 --registry-username $DOCKER_USER --registry-password $DOCKER_PASS
+az container create --resource-group $group_name --name $continaer_name --image $image --dns-name-label $dns_label --ports 80 --registry-username $DOCKER_USER --registry-password $DOCKER_PASS --cpu 1 --memory 1
