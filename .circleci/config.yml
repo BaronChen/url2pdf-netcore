@@ -14,10 +14,11 @@ jobs:
           name: Build docker image
           command: |
             TAG=0.$CIRCLE_BUILD_NUM
+            mkdir -p /tmp/workspace
+            echo $TAG > /tmp/workspace/tag-output
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               ./builds/build-image.sh
               ./builds/push-image.sh $TAG
-              echo $TAG > /tmp/workspace/tag-output
             fi
       - persist_to_workspace:
           root: /tmp/workspace
