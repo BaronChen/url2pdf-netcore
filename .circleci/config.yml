@@ -15,6 +15,24 @@ jobs:
           command: |
             TAG=0.$CIRCLE_BUILD_NUM
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./deploy/build-image.sh
-              ./deploy/push-image.sh $TAG
+              ./build/build-image.sh
+              ./build/push-image.sh $TAG
+            fi
+
+  deploy:
+    requires:
+      - build
+    docker:
+      - image: microsoft/azure-cli:latest
+    steps:
+      - checkout
+
+      # build and push Docker image
+      - run:
+          name: Deploy to ACI
+          command: |
+            TAG=0.$CIRCLE_BUILD_NUM
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./deploy/config-cli.sh
+              ./deploy/aci-deploy.sh $TAG
             fi
