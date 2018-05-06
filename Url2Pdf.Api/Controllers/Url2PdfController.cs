@@ -36,11 +36,19 @@ namespace Url2Pdf.Api.Controllers
                 return BadRequest("Invalid url");
             }
 
-            var result = await _url2PdfConversionService.ConverUrlToPdf(HttpUtility.UrlDecode(url));
+            try
+            {
+                var result = await _url2PdfConversionService.ConverUrlToPdf(HttpUtility.UrlDecode(url));
+
+                string filename = @"converted.pdf";
+
+                return File(result, "application/pdf", filename);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("An error was occurred, the webpage may be too large to handle.");
+            }
             
-            string filename = @"converted.pdf";
-            
-            return File(result, "application/pdf", filename);
         }
 
 
