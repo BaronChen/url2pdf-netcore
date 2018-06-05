@@ -14,9 +14,9 @@ namespace Url2Pdf.Api.Controllers
     public class Url2PdfController : Controller
     {
 
-        private IUrl2PdfConversionService _url2PdfConversionService;
+        private IPdfConversionService _url2PdfConversionService;
 
-        public Url2PdfController(IUrl2PdfConversionService url2PdfConversionService)
+        public Url2PdfController(IPdfConversionService url2PdfConversionService)
         {
             _url2PdfConversionService = url2PdfConversionService;
         }

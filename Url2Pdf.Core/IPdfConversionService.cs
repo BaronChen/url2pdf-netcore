@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Url2Pdf.Core
 {
-    public interface IUrl2PdfConversionService
+    public interface IPdfConversionService
     {
         Task<byte[]> ConverUrlToPdf(string url);
     }

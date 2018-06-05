@@ -25,9 +25,7 @@ namespace Url2Pdf.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddNodeServices((x) => { x.InvocationTimeoutMilliseconds = 180000; });
-            services.AddTransient<IUrl2PdfConversionService, Url2PdfConversionService>();
-
+            services.AddServices();
             services.AddCors();
             services.AddMvc();
         }

@@ -1,8 +1,18 @@
-version: '3'
+version: '3.4'
 
 services:
   url2pdf.api:
     image: url2pdfapi
+    environment:
+      "JSREPORT_URL": "http://url2pdf.jsreport:5488"
     build:
       context: .
       dockerfile: Url2Pdf.Api/Dockerfile
+
+  url2pdf.jsreport:
+    image: jsreporextend
+    build:
+      context: .
+      dockerfile: ./jsreport.Dockerfile
+    ports:
+      - "5488:5488"

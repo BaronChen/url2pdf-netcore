@@ -9,8 +9,6 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Url2Pdf.Core", "Url2Pdf.Core\Url2Pdf.Core.csproj", "{F7D999AF-2E1B-4B2F-91DB-1A485B9785A3}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Url2Pdf.Node", "Url2Pdf.Node\Url2Pdf.Node.njsproj", "{508C77ED-F42A-4E2D-BFE5-9C3644E0E636}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{F7D999AF-2E1B-4B2F-91DB-1A485B9785A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7D999AF-2E1B-4B2F-91DB-1A485B9785A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7D999AF-2E1B-4B2F-91DB-1A485B9785A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{508C77ED-F42A-4E2D-BFE5-9C3644E0E636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{508C77ED-F42A-4E2D-BFE5-9C3644E0E636}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{508C77ED-F42A-4E2D-BFE5-9C3644E0E636}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{508C77ED-F42A-4E2D-BFE5-9C3644E0E636}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
