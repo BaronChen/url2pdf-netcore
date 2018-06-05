@@ -10,12 +10,13 @@ namespace Url2Pdf.Core
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.Configure<JsReportOptions>(options =>
+            services.Configure<AthenaOptions>(options =>
             {
-                options.Url = Environment.GetEnvironmentVariable("JSREPORT_URL");
+                options.Url = Environment.GetEnvironmentVariable("ATHENA_URL");
+                options.Key = Environment.GetEnvironmentVariable("ATHENA_KEY");
             });
 
-            services.AddTransient<IPdfConverter, JsReportPdfConverter>();
+            services.AddTransient<IPdfConverter, AthenaPdfConverter>();
 
             services.AddTransient<IPdfConversionService, PdfConversionService>();
         }

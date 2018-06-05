@@ -4,15 +4,13 @@ services:
   url2pdf.api:
     image: url2pdfapi
     environment:
-      "JSREPORT_URL": "http://url2pdf.jsreport:5488"
+      "ATHENA_URL": "http://url2pdf.athena:8080"
+      "ATHENA_KEY": "arachnys-weaver"
     build:
       context: .
       dockerfile: Url2Pdf.Api/Dockerfile
 
-  url2pdf.jsreport:
-    image: jsreporextend
-    build:
-      context: .
-      dockerfile: ./jsreport.Dockerfile
+  url2pdf.athena:
+    image: arachnysdocker/athenapdf-service:2.12.0    
     ports:
-      - "5488:5488"
+      - "8080:8080"
